@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>BhashaVaani - AI-Powered Multilingual Speech Translation (v{{ range(1, 10000) | random }}) - NO DOCUMENT TRANSLATION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v={{ range(1, 10000) | random }}">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-logo">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>BhashaVaani</h1>
+                    <span>AI Speech Translation Platform</span>
+                </div>
+            </div>
+            <div class="nav-controls">
+                <button class="nav-btn" id="historyBtn">
+                    <i class="fas fa-history"></i>
+                    <span>History</span>
+                </button>
+                <button class="nav-btn" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </button>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="darkModeToggle">
+                    <label for="darkModeToggle">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h2 class="hero-title">Transform Speech Across Languages</h2>
+                    <p class="hero-subtitle">Advanced AI-powered real-time speech recognition and translation supporting multiple Indian languages</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">Languages</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">99%</span>
+                            <span class="stat-label">Accuracy</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">< 2s</span>
+                            <span class="stat-label">Response Time</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Translation Interface -->
+            <section class="translation-section">
+                <div class="translation-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-microphone"></i> Speech Translation</h3>
+                        <p>Select your languages and start speaking</p>
+                    </div>
+                    
+                    <div class="language-selector">
+                        <div class="lang-group">
+                            <label for="inputLang" class="lang-label">
+                                <i class="fas fa-user"></i>
+                                Source Language
+                            </label>
+                            <div class="select-wrapper">
+                                <select id="inputLang" class="lang-select">
+                                    <option value="en-US">🇬🇧 English (US)</option>
+                                    <option value="hi-IN">🇮🇳 Hindi</option>
+                                    <option value="kn-IN">🇮🇳 Kannada</option>
+                                    <option value="mr-IN">🇮🇳 Marathi</option>
+                                </select>
+                                <i class="fas fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="lang-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        
+                        <div class="lang-group">
+                            <label for="outputLang" class="lang-label">
+                                <i class="fas fa-language"></i>
+                                Target Language
+                            </label>
+                            <div class="select-wrapper">
+                                <select id="outputLang" class="lang-select">
+                                    <option value="en">🇬🇧 English</option>
+                                    <option value="hi">🇮🇳 Hindi</option>
+                                    <option value="kn">🇮🇳 Kannada</option>
+                                    <option value="mr">🇮🇳 Marathi</option>
+                                </select>
+                                <i class="fas fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recording-section">
+                        <button id="recordBtn" class="record-button">
+                            <div class="record-icon">
+                                <i class="fas fa-microphone" id="micIcon"></i>
+                            </div>
+                            <span id="recordText">Click to Start Recording</span>
+                        </button>
+                        <div id="status" class="status-text"></div>
+                    </div>
+
+                    <div class="results-section">
+                        <div class="result-card">
+                            <div class="result-header">
+                                <i class="fas fa-headphones"></i>
+                                <span>Recognized Speech</span>
+                            </div>
+                            <div id="recognizedText" class="result-content"></div>
+                        </div>
+                        
+                        <div class="result-card">
+                            <div class="result-header">
+                                <i class="fas fa-language"></i>
+                                <span>Translation</span>
+                            </div>
+                            <div id="translatedText" class="result-content"></div>
+                            <audio id="audioPlayer" controls class="audio-player" style="display:none;"></audio>
+                        </div>
+                    </div>
+
+                    <div id="spinner" class="loading-spinner" style="display:none;">
+                        <div class="spinner-ring"></div>
+                        <span>Processing...</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section id="history-section" class="history-section" style="display:none;">
+                <div class="history-header">
+                    <h3><i class="fas fa-history"></i> Translation History</h3>
+                    <button id="clearHistoryBtn" class="clear-btn">
+                        <i class="fas fa-trash"></i>
+                        Clear All
+                    </button>
+                </div>
+                <div id="history-list" class="history-list"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-cog"></i> Settings</h3>
+                <button class="modal-close" id="closeSettings">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label>Theme</label>
+                    <div class="theme-options">
+                        <button class="theme-option active" data-theme="light">
+                            <i class="fas fa-sun"></i>
+                            Light
+                        </button>
+                        <button class="theme-option" data-theme="dark">
+                            <i class="fas fa-moon"></i>
+                            Dark
+                        </button>
+                        <button class="theme-option" data-theme="auto">
+                            <i class="fas fa-adjust"></i>
+                            Auto
+                        </button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <label>Audio Playback</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="autoPlayToggle" checked>
+                        <label for="autoPlayToggle">Auto-play translated audio</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="toastMessage">Translation completed successfully!</span>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}?v={{ range(1, 10000) | random }}"></script>
+</body>
+</html>
+
