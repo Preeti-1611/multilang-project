@@ -12,7 +12,7 @@ A web application I built for real-time speech recognition and translation acros
 ## Tech Stack
 
 - **Backend**: Flask, SpeechRecognition, googletrans, gTTS
-- **Frontend**: HTML5, CSS3, JavaScript ES6+
+- **Frontend: HTML5, CSS3, JavaScript ES6+
 
 ## Quick Start
 
@@ -41,10 +41,19 @@ python app.py
 - **Real-time Translation**: Making it feel instant
 - **UI/UX**: Creating a simple, intuitive interface
 
-## Learning Outcomes
+## Learning Outcomes 
+
+ 📸 Screenshots    
+![homepage](homepage.png)
+![Demo1](demo1.png) 
+ ![Demo2](demo2.png) 
+ ![Demo3](demo3.png)
+ ![Demo4](demo4.png) 
+ ![Demo5](demo5.png)
+
 
 This project taught me about full-stack development, audio processing, API integration, and responsive design.
 
 ---
 
-Built with ❤️ to help people communicate across language barriers. 
+Developed to enable seamless communication across language barriers.
