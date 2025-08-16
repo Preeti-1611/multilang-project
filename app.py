@@ -2,11 +2,10 @@ from flask import Flask, render_template, request, jsonify, send_file, session, 
 import os
 import tempfile
 import speech_recognition as sr
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 from gtts import gTTS
 from pydub import AudioSegment
 import uuid
-
 from datetime import datetime
 
 app = Flask(__name__)
@@ -75,8 +74,7 @@ def process():
         print(f"Speech recognition failed: {e}")
         not_recognized_text = "Not recognized"
         try:
-            translator = Translator()
-            translated = translator.translate(not_recognized_text, dest=output_lang).text
+            translated = GoogleTranslator(source='auto', target=output_lang).translate(not_recognized_text)
             tts_filename = f"not_recognized_{uuid.uuid4().hex}.mp3"
             tts_path = os.path.join(temp_dir, tts_filename)
             tts = gTTS(translated, lang=output_lang)
@@ -85,9 +83,8 @@ def process():
         except Exception as tts_e:
             return jsonify({'recognized': not_recognized_text, 'translated': '', 'audio_file': None})
 
-    translator = Translator()
     try:
-        translated = translator.translate(recognized, dest=output_lang).text
+        translated = GoogleTranslator(source='auto', target=output_lang).translate(recognized)
     except Exception as e:
         print(f"Translation failed: {e}")
         return jsonify({'recognized': recognized, 'translated': f"Error translating: {e}", 'audio_file': None})
@@ -125,8 +122,6 @@ def audio(filename):
     if tts_path and os.path.exists(tts_path):
         return send_file(tts_path, mimetype='audio/mpeg')
     return '', 404
-
-
 
 @app.route('/history', methods=['GET'])
 def get_history():
