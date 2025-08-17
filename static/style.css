@@ -6,7 +6,7 @@
 }
 
 :root {
-    --bg-primary: #ffffff;
+    --bg-primary: #9098f1;
     --bg-secondary: #ffffff;
     --text-primary: #333333;
     --text-secondary: #666666;
@@ -72,10 +72,10 @@ body {
 
 .nav-btn {
     background: transparent;
-    border: 1px solid #6b79f4;
-    border-radius: 4px;
+    border: 2px solid #6672e2;
+    border-radius: 6px;
     padding: 0.5rem 1rem;
-    color: #666;
+    color: #201f1f;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -84,7 +84,7 @@ body {
 }
 
 .nav-btn:hover {
-    background: #f5f5f5;
+    background: #a6bbfe;
 }
 
 .theme-toggle input {
@@ -97,16 +97,16 @@ body {
     justify-content: center;
     width: 40px;
     height: 40px;
-    border-radius: 4px;
+    border-radius: 6px;
     background: #f5f5f5;
-    border: 1px solid #ddd;
+    border: 2px solid #6672e2;
     cursor: pointer;
     position: relative;
     transition: all 0.3s;
 }
 
 .theme-toggle label:hover {
-    background: #e9ecef;
+    background: #a6bbfe;
 }
 
 .theme-toggle label i {
@@ -181,8 +181,8 @@ body {
     text-align: center;
     padding: 1.5rem;
     background: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
     min-width: 120px;
 }
 
@@ -204,7 +204,7 @@ body {
 }
 
 .translation-card {
-    background: #f8f9fa;
+    background: #bed4fa;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 2rem;
@@ -261,7 +261,7 @@ body {
     width: 100%;
     padding: 1rem;
     border: 2px solid #ddd;
-    border-radius: 4px;
+    border-radius: 8px;
     background: white;
     color: #333;
     font-size: 1rem;
@@ -270,7 +270,7 @@ body {
 
 .lang-select:focus {
     outline: none;
-    border-color: #6366f1;
+    border-color: #8e90ef;
 }
 
 .lang-arrow {
@@ -285,7 +285,7 @@ body {
 }
 
 .record-button {
-    background: #6366f1;
+    background: #797be9;
     border: none;
     border-radius: 50%;
     width: 120px;
