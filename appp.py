@@ -9,7 +9,7 @@ import uuid
 from datetime import datetime
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key"  # Needed for session
+app.secret_key = os.environ.get("SECRET_KEY", "dev-secret-change-me")
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
@@ -151,4 +151,5 @@ def service_worker():
     return send_file('static/sw.js', mimetype='application/javascript')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
